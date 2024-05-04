@@ -1,0 +1,50 @@
+/* Dashboard.css */
+.table-container {
+    width: 100%;
+    /* overflow-x: auto; */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .logout-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Desktop/Tablet view */
+  @media (min-width: 768px) {
+    .table-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    table {
+      max-width: 80%;
+    }
+  }
+  
+  /* Mobile view */
+  @media (max-width: 767px) {
+    th, td {
+      font-size: 14px;
+    }
+  }
+  
