@@ -20,7 +20,6 @@ const newToken = user => {
 }
 
 const verifyToken = token =>
-
   new Promise((resolve, reject) => {
     jwt.verify(token, JWT.jwt, (err, payload) => {
       if (err) return reject(err)

@@ -16,12 +16,21 @@ const Player = require('../models/Player')
     try {
       const _id = req.params.id
       const user = await Player.find({userId:_id});
-
       const player_Id = user[0]._id;
       const playerBid = await Auction.find({playerId:player_Id})
 
-      // console.log(playerBid)
-      res.status(201).send(playerBid)
+      const auction = new Auction({
+        endDate: new Date('2024-05-07')
+      });
+
+      let auctionHours = Math.floor(auction.timeLeft/3600000);
+      let auctionMinutes = Math.floor((auction.timeLeft % 3600000)/60000)
+      let aucitonSeconds = Math.floor((auction.timeLeft % 60000)/1000)
+
+      const time = `${auctionHours},${auctionMinutes},${aucitonSeconds}`
+      console.log(time)
+      res.status(201).send({playerBid,time})
+
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Server Error" });
