@@ -10,7 +10,7 @@
     "build": "echo jsom-e-com"
   },
   "keywords": [],
-  "author": "Mohit Sojitra",
+  "author": "Akhil Govind",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

@@ -7,6 +7,7 @@ function OfferScreen() {
     const user = useSelector(state => state.user);
     const playerId = user.userInfo.details._id;
     const [offers, setOffers] = useState([]);
+    const [timeLeft,setTimeLeft] = useState()
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -14,7 +15,8 @@ function OfferScreen() {
         const fetchOffers = async () => {
             try {
                 const {data} = await Api.getRequest(`/api/auction/bid/${playerId}`);
-                setOffers(JSON.parse(data)); 
+                const playerBID = JSON.parse(data);
+                setOffers(playerBID.playerBid); 
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching offers:', error);
@@ -25,7 +27,6 @@ function OfferScreen() {
 
         fetchOffers();
     }, [playerId]);
-
     return (
         <div className="offer-container">
             {loading ? (
@@ -36,13 +37,19 @@ function OfferScreen() {
                 <div>
                     <h2 className="offer-heading">Offers:</h2>
                     <ul className="offer-list">
-                        {offers.map((offer, index) => (
-                            <li key={index} className="offer-item">
-                                <p><span className="offer-label">Bidder:</span> {offer.bids[0].bidder}</p>
-                                <p><span className="offer-label">Description:</span> {offer.bids[0].bidAmount}</p>
-                                <p><span className="offer-label">Starting Bid:</span> {offer.startingBid}</p>
-                            </li>
-                        ))}
+                        {offers ? (
+                            offers.map((offer, index) => (
+                                <li key={index} className="offer-item">
+                                    <p><span className="offer-label">Bidder:</span> {offer.bids[0].bidder}</p>
+                                    <p><span className="offer-label">Description:</span> {offer.bids[0].bidAmount}</p>
+                                    <p><span className="offer-label">Starting Bid:</span> {offer.startingBid}</p>
+                                </li>
+                            ))
+                        ):
+                        (
+                            <p>No Offers Yet.</p>
+                        )
+                        }
                     </ul>
                 </div>
             )}

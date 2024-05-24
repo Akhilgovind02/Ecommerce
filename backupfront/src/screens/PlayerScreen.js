@@ -54,4 +54,9 @@ function PlayerScreen() {
   );
 }
 
-export default PlayerScreen;
+const mapStateToProps = (state) => ({
+  bike: state.bike.bike,
+  error: state.bike.error,
+});
+
+export default connect(mapStateToProps, { getBikeById })(BikeDetails);

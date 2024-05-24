@@ -55,9 +55,7 @@ function App() {
           <Route exact path="/signin" component={SignIn} />
           <Route excat path = "/players" component = {PlayerScreen} />
           <Route excat path = "/player/:id" component = {ViewPlayer}></Route>
-          <Route excat path = "/offers" component = {OfferScreen}></Route>
-
-
+          <Route excat path = "/offers" component = {OfferScreen}></Route>  
           <Route excat path = "/admin/signup" component = {AdminSignup}></Route>
           <Route excat path = "/admin/signin" component = {AdminSignIn}></Route>
           <Route exact path="/dasboard" component={AdminDashboard} />
